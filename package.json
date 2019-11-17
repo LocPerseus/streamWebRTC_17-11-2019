@@ -1,24 +1,28 @@
 {
-  "name": "streamwebrtc_17-11-2019",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/LocPerseus/streamWebRTC_17-11-2019.git"
-  },
-  "author": "hoangloc",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/LocPerseus/streamWebRTC_17-11-2019/issues"
-  },
-  "homepage": "https://github.com/LocPerseus/streamWebRTC_17-11-2019#readme",
-  "dependencies": {
-    "ejs": "^2.7.2",
-    "express": "^4.17.1",
-    "nodemon": "^1.19.4"
-  }
+    "name": "streamwebrtc_17-11-2019",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/LocPerseus/streamWebRTC_17-11-2019.git"
+    },
+    "author": "hoangloc",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/LocPerseus/streamWebRTC_17-11-2019/issues"
+    },
+    "homepage": "https://github.com/LocPerseus/streamWebRTC_17-11-2019#readme",
+    "dependencies": {
+        "ejs": "^2.7.2",
+        "express": "^4.17.1",
+        "nodemon": "^1.19.4"
+    },
+    "devDependencies": {
+        "webpack": "^4.41.2",
+        "webpack-cli": "^3.3.10"
+    }
 }
