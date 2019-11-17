@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container" style="margin-left:200px ;">
+        <h1>Learn Web RTC</h1>
+        <video id="localStream" width="400" controls></video>
+    </div>
+
+</body>
+<script>
+    navigator.mediaDevices.getUserMedia({
+            audio: false,
+            video: true
+        }).then(stream => {
+            const video = document.getElementById('localStream');
+            video.srcObject = stream;
+            video.onloadedmetadata = function() {
+                video.play();
+            };
+        })
+        .catch(err => console.log(err))
+</script>
+
+</html>
