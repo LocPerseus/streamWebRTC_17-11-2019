@@ -485,7 +485,7 @@ eval("var g;\n\n// This works in non-strict mode\ng = (function() {\n\treturn th
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const openStream = __webpack_require__(/*! ./openStream */ \"./src/openStream.js\");\r\n\r\nconst $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\n// openStream();\r\nconst Peer = __webpack_require__(/*! simple-peer */ \"./node_modules/simple-peer/index.js\");\r\nconst p = new Peer({ initiator: location.hash === '#1', trickle: false }); // trickle sử dụng server bên ngoài\r\np.on('signal', token => {\r\n    $('#txtMySignal').val(JSON.stringify(token));\r\n});\r\np.on('connect', () => {\r\n    setInterval(() => p.send(Math.random()), 2000);\r\n    console.log('Connected')\r\n});\r\np.on('data', data => console.log('NHAN DU LIEU: ' + data));\r\n$('#btnConnect').click(() => {\r\n    const friendSignal = JSON.parse($('#txtFriendSignal').val());\r\n    p.signal(friendSignal);\r\n})\r\nconsole.log('Hello World');\n\n//# sourceURL=webpack:///./src/app.js?");
+eval("const openStream = __webpack_require__(/*! ./openStream */ \"./src/openStream.js\");\r\nopenStream();\n\n//# sourceURL=webpack:///./src/app.js?");
 
 /***/ }),
 
@@ -496,7 +496,7 @@ eval("const openStream = __webpack_require__(/*! ./openStream */ \"./src/openStr
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-eval("const playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\r\n\r\nfunction openStream() {\r\n    navigator.mediaDevices.getUserMedia({\r\n            audio: false,\r\n            video: true\r\n        }).then(stream => playVideo(stream, 'localStream'))\r\n        .catch(err => console.log(err))\r\n}\r\n\r\nmodule.exports = openStream;\n\n//# sourceURL=webpack:///./src/openStream.js?");
+eval("const playVideo = __webpack_require__(/*! ./playVideo */ \"./src/playVideo.js\");\r\nconst Peer = __webpack_require__(/*! simple-peer */ \"./node_modules/simple-peer/index.js\");\r\nconst $ = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\r\n\r\nfunction openStream() {\r\n    navigator.mediaDevices\r\n        .getUserMedia({\r\n            audio: false,\r\n            video: true\r\n        })\r\n        .then(stream => {\r\n            playVideo(stream, \"localStream\");\r\n            const p = new Peer({ initiator: location.hash === \"#1\", trickle: false, stream: stream }); // trickle sử dụng server bên ngoài\r\n            p.on(\"signal\", token => {\r\n                $(\"#txtMySignal\").val(JSON.stringify(token));\r\n            });\r\n            // p.on('connect', () => {\r\n            //     setInterval(() => p.send(Math.random()), 2000);\r\n            //     console.log('Connected')\r\n            // });\r\n            // p.on('data', data => console.log('NHAN DU LIEU: ' + data));\r\n\r\n            $(\"#btnConnect\").click(() => {\r\n                const friendSignal = JSON.parse($(\"#txtFriendSignal\").val());\r\n                p.signal(friendSignal);\r\n            });\r\n            p.on('stream', friendStream => playVideo(friendStream, 'friendStream'))\r\n            console.log(\"Hello World\");\r\n        })\r\n        .catch(err => console.log(err));\r\n}\r\n\r\nmodule.exports = openStream;\n\n//# sourceURL=webpack:///./src/openStream.js?");
 
 /***/ }),
 
